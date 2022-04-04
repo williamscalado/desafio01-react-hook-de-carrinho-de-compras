@@ -101,6 +101,8 @@ const Cart = (): JSX.Element => {
               </button>
             </td>
           </tr>
+
+          
         </tbody>
       </ProductTable>
 
