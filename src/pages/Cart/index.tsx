@@ -105,7 +105,6 @@ const Cart = (): JSX.Element => {
           
         </tbody>
       </ProductTable>
-
       <footer>
         <button type="button">Finalizar pedido</button>
 

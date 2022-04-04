@@ -34,9 +34,32 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const addProduct = async (productId: number) => {
     try {
-      // TODO
-    } catch {
-      // TODO
+      const localDataCard = localStorage.getItem('@RocketShoes:cart')
+      let currentDataCard = JSON.parse(localDataCard || "")
+
+      if (localDataCard) {
+        //  Data card exist     
+        currentDataCard[productId] ?
+          currentDataCard[productId]++
+          :
+          currentDataCard = {
+            ...currentDataCard,
+            [productId]: 1
+          }
+          ;
+
+      } else {
+        // first item Data Card
+        currentDataCard = {
+          [productId]: 1
+        }
+
+      }
+
+      localStorage.setItem('@RocketShoes:cart', JSON.stringify(currentDataCard))
+
+    } catch (error) {      
+      toast.error('Produto não contabilizado')
     }
   };
 
