@@ -44,7 +44,7 @@ const Home = (): JSX.Element => {
       {newGetAllProduct.map((item: ProductFormatted) => {
         return (
           <li key={item.id}>
-            <img src={item.image} alt="Tênis de Caminhada Leve Confortável" />
+            <img src={item.image} alt={item.title} />
             <strong>{item.title}</strong>
             <span>{item.priceFormatted}</span>
             <button
