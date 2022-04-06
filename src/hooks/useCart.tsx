@@ -38,7 +38,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
   });
 
   const [getAllProduct, setgetAllProduct] = useState<Product[]>([])
-
   useEffect(() => {
     async function loadProducts() {
       api.get('products').then((response: any) => {
@@ -48,12 +47,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setgetAllProduct(ProductsData)
       })
     }
-
-
     loadProducts();
-  }, []);
-
-
+   }, []);
 
 
   const localStorageRef = useRef<Product[]>()
@@ -64,7 +59,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const localStorageRefValeu = localStorageRef.current ?? cart
 
   useEffect(() => {
-    if (localStorageRefValeu != cart) {
+    if (localStorageRefValeu !== cart) {
       localStorage.setItem(globalLocalStorageName, JSON.stringify(cart))
     }
   }, [cart, localStorageRefValeu])
